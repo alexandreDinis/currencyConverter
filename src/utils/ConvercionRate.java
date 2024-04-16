@@ -1,11 +1,13 @@
 package utils;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import models.Rate;
 import service.ExchangeRateAPI;
-import java.util.HashMap;
-import java.util.InputMismatchException;
-import java.util.Locale;
-import java.util.Scanner;
+import service.FileGenerator;
+
+import java.io.IOException;
+import java.util.*;
 
 
 public class ConvercionRate {
@@ -13,6 +15,8 @@ public class ConvercionRate {
 
     HashMap<Integer, String> currencyMap = CurrencyHashMap.createCurrencyMap();
     ExchangeRateAPI ex = new ExchangeRateAPI();
+    Gson gson = new GsonBuilder().setPrettyPrinting().create();
+    ArrayList<Rate> list = new ArrayList<>();
     Scanner  input = new Scanner(System.in);
     Messages msg = new Messages();
     protected String   op  = "S";
@@ -27,12 +31,12 @@ public class ConvercionRate {
 
         while(true){
 
-            if(!op.contentEquals("S")){
+            if(op.contentEquals("N")){
                 System.out.println(msg.end);
                 input.close();
                 break;
 
-            }else {
+            }else if(op.contentEquals("S")){
 
                 msg.menu();
                 System.out.println(msg.extendMenu);
@@ -101,11 +105,39 @@ public class ConvercionRate {
                         input.nextLine();
                     }
                 }
+
                 System.out.println(msg.loading);
                 System.out.println();
                 Rate rate = ex.search(base, target, value);
-                System.out.println(rate);
+                list.add(rate);
+                System.out.println(gson.toJson(rate));
                 System.out.println();
+                input.nextLine();
+
+                System.out.println(msg.salveFile);
+                String salve = input.nextLine().toUpperCase(Locale.ROOT);
+                if(salve.contentEquals("S")){
+                    FileGenerator fileGenerator = new FileGenerator();
+                    try {
+                        fileGenerator.salveFile(rate);
+                        System.out.println(msg.salvedSuccessfully);
+                    } catch (IOException e) {
+                        throw new RuntimeException(e);
+                    }
+                }
+            }else if(op.contentEquals("H")){
+                System.out.println(list);
+            }else{
+                System.out.println(msg.notOption);
+            }
+            System.out.println(msg.replay);
+
+            try {
+                op = input.nextLine().toUpperCase();
+               // input.nextLine();
+            }catch (InputMismatchException e){
+                System.out.println(msg.notOption);
+
             }
         }
     }

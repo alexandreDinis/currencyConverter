@@ -11,6 +11,9 @@ public class Messages {
     protected final String extendMenu = "Se você não encontrou o que estava procurando digite [1] para estender o menu ou [2] para continuar.";
     protected final String dotError = "ERRO, talvez você esteja usando virgula(,) ou não digitou um número!";
     protected final String loading = "Carregando por favor aguarde.";
+    protected final String salveFile = "Deseja salvar o Endereço ? [S/N] ";
+    protected final String replay = "Deseja fazer uma nova consulta ? [S]Sim [N]Não [H]Historico de cunsulta";
+    protected final String salvedSuccessfully = "Salvo com sucesso!";
 
 
     public void menu(){
