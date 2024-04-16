@@ -16,9 +16,9 @@ public class ExchangeRateAPI {
 
      //dee9848bc3b803cdedf725b5
 
-    public Rate search(String baseCode, String targetCode, String conversionRate){
+    public Rate search(String baseCode, String targetCode, Double quantity){
 
-        URI address = URI.create("https://v6.exchangerate-api.com/v6/dee9848bc3b803cdedf725b5/pair/"+ baseCode + "/" + targetCode + "/" + conversionRate);
+        URI address = URI.create("https://v6.exchangerate-api.com/v6/dee9848bc3b803cdedf725b5/pair/"+ baseCode + "/" + targetCode + "/" + quantity);
         HttpClient client = HttpClient.newHttpClient();
 
         HttpRequest request = HttpRequest.newBuilder()
