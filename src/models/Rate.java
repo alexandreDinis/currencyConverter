@@ -6,6 +6,15 @@ public class Rate {
     private String target_code;                 // codigo da moeda que sera convertida
     private String conversion_rate;            //  valor a ser convertido
     private String conversion_result;         //   resultado do valor covertido
+    private String data;
+
+    public String getData() {
+        return data;
+    }
+
+    public void setData(String data) {
+        this.data = data;
+    }
 
     public String getBase_code() {
         return base_code;
@@ -41,11 +50,12 @@ public class Rate {
 
     @Override
     public String toString() {
-        return "ConverseRate{" +
+        return "Rate{" +
                 "base_code='" + base_code + '\'' +
                 ", target_code='" + target_code + '\'' +
                 ", conversion_rate='" + conversion_rate + '\'' +
                 ", conversion_result='" + conversion_result + '\'' +
+                ", data='" + data + '\'' +
                 '}';
     }
 }

@@ -7,6 +7,7 @@ import service.ExchangeRateAPI;
 import service.FileGenerator;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.*;
 
 
@@ -16,14 +17,17 @@ public class ConvercionRate {
     HashMap<Integer, String> currencyMap = CurrencyHashMap.createCurrencyMap();
     ExchangeRateAPI ex = new ExchangeRateAPI();
     Gson gson = new GsonBuilder().setPrettyPrinting().create();
+    Date date = new Date();
+    SimpleDateFormat dateFormat = new SimpleDateFormat("yy/MM/dd 'hora:' HH:mm");
     ArrayList<Rate> list = new ArrayList<>();
     Scanner  input = new Scanner(System.in);
     Messages msg = new Messages();
+
     protected String   op  = "S";
     protected int number = 0;
     protected double value = 0.0;
     protected String base,target,sValue;
-
+    protected String data = dateFormat.format(date);
 
     public void conversionStart(){
 
@@ -109,6 +113,7 @@ public class ConvercionRate {
                 System.out.println(msg.loading);
                 System.out.println();
                 Rate rate = ex.search(base, target, value);
+                rate.setData(data);
                 list.add(rate);
                 System.out.println(gson.toJson(rate));
                 System.out.println();
@@ -116,6 +121,9 @@ public class ConvercionRate {
 
                 System.out.println(msg.salveFile);
                 String salve = input.nextLine().toUpperCase(Locale.ROOT);
+
+                // salvar arquivo
+
                 if(salve.contentEquals("S")){
                     FileGenerator fileGenerator = new FileGenerator();
                     try {
@@ -125,8 +133,21 @@ public class ConvercionRate {
                         throw new RuntimeException(e);
                     }
                 }
+                // Mostrar historico
+
             }else if(op.contentEquals("H")){
-                System.out.println(list);
+                System.out.println(gson.toJson(list));
+                System.out.println(msg.salveFile);
+                String salve = input.nextLine().toUpperCase(Locale.ROOT);
+                if(salve.contentEquals("S")){
+                    FileGenerator fileGenerator = new FileGenerator();
+                    try {
+                        fileGenerator.salveFileHistory(list,data);
+                        System.out.println(msg.salvedSuccessfully);
+                    } catch (IOException e) {
+                        throw new RuntimeException(e);
+                    }
+                }
             }else{
                 System.out.println(msg.notOption);
             }
@@ -134,7 +155,6 @@ public class ConvercionRate {
 
             try {
                 op = input.nextLine().toUpperCase();
-               // input.nextLine();
             }catch (InputMismatchException e){
                 System.out.println(msg.notOption);
 
