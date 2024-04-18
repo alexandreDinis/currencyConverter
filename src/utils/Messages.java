@@ -1,24 +1,40 @@
 package utils;
 
+import java.util.InputMismatchException;
+import java.util.Scanner;
+
 public class Messages {
 
     protected final String error = "Por favor, digite apenas numeros";
-    protected final String ChooseBase  = "Digite o numero correspondente a moeda base ";
-    protected final String chooseTager = "Digite o numero correspondente a moeda para conversão ";
-    protected final String value = "Digite o valor que deseja converter, use o (.) para as casas decimais.";
+    protected final String ChooseBase  = "Digite o número correspondente a moeda que você deseja converter ";
+    protected final String chooseTager = "Digite o numero correspondente a moeda que será convertida ";
+    protected final String value = "Digite o valor que você deseja que seja convertido, ultize um ponto (.) para as casas decimais.";
     protected final String end = "Programa encerrado com sucesso! ";
     protected final String notOption = "Opção invalida!  ";
-    protected final String extendMenu = "Se você não encontrou o que estava procurando, digite [1] para estender o menu ou, [2] para continuar.";
+    protected final String extendMenu = "Caso não tenha encontrado a moeda de sua procura, digite [1] para estender o menu ou, [2] para continuar.";
     protected final String dotError = "ERRO, talvez você esteja usando virgula(,) ou não digitou um número!";
-    protected final String loading = "Carregando por favor aguarde.";
-    protected final String salveFile = "Deseja salvar a consulta ? [S/N] ";
-    protected final String replay = "Deseja fazer uma nova consulta ? [S]Sim | [N]Não | [H]Historico de cunsulta.";
+    protected final String loading = "Carregando, por favor aguarde...";
+    protected final String salveFile = "Deseja salvar a sua consulta? [S/N] ";
+    protected final String replay = "Deseja fazer uma nova consulta? [S]Sim | [N]Não | [H]Histórico de cunsulta.";
     protected final String salvedSuccessfully = "Salvo com sucesso!";
-
+    protected final String startHistory = "=============== HISTORICO ================";
+    protected final String endtHistory = "=================== FIM ===================";
 
     public void menu(){
 
         System.out.println("""
+
+============================================== CONVERSOR DE MOEDAS =====================================================
+
+O Conversor de Moedas é um programa que converte moedas em tempo real de 155 países. Você pode salvar suas consultas 
+em arquivos e também manter um histórico de consultas diretamente do seu terminal.
+
+Aqui estão algumas moedas de alguns países espalhados pelo globo. Para fazer uma conversão, digite o número que 
+antecede as moedas de sua escolha, escolhendo primeiramente a moeda base e em seguida a moeda na qual você gostaria de 
+converter e, após isso, digite o valor a ser convertido. (Observação: digite ponto [.] para identificar casas decímais.)
+
+Caso a moeda que você procure não esteja no menu abaixo, siga as próximas instruções.
+
 ===============================
 [1] ARS - Peso argentino
 [2] BOB - Boliviano boliviano
@@ -28,6 +44,31 @@ public class Messages {
 [6] USD - Dólar americano
 ===============================
 """);
+        System.out.println(extendMenu);
+
+        Scanner input = new Scanner(System.in);
+
+        while (true) {
+            try {
+
+                int number = input.nextInt();
+                if (number == 1) {
+                    fullMenu();
+                    break;
+                } else if (number != 2) {
+                    System.out.println(notOption);
+
+                    menu();
+                    break;
+                }else{
+                    break;
+                }
+            } catch (InputMismatchException e) {
+
+                System.out.println(error);
+                input.nextLine();
+            }
+        }
     }
 
     public void fullMenu(){

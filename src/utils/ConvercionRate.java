@@ -43,18 +43,6 @@ public class ConvercionRate {
             }else if(op.contentEquals("S")){
 
                 msg.menu();
-                System.out.println(msg.extendMenu);
-
-                try {
-                    int number = input.nextInt();
-                    if(number == 1){
-                        msg.fullMenu();
-                    }
-                }catch (InputMismatchException e){
-
-                    System.out.println(msg.error);
-                    input.nextLine();
-                }
 
                 while (true) {
                     System.out.println(msg.ChooseBase);
@@ -136,7 +124,10 @@ public class ConvercionRate {
                 // Mostrar historico
 
             }else if(op.contentEquals("H")){
+                System.out.println(msg.startHistory);
                 System.out.println(gson.toJson(list));
+                System.out.println(msg.endtHistory);
+                System.out.println();
                 System.out.println(msg.salveFile);
                 String salve = input.nextLine().toUpperCase(Locale.ROOT);
                 if(salve.contentEquals("S")){
