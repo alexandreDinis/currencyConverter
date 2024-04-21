@@ -9,7 +9,7 @@ O Conversor de Moedas é um programa que converte moedas em tempo real de 155 pa
 3. Ultilizando o conversor;
 4. Salvando o arquivo;
 5. Gerando e salvando historico.
-6. Encerrando o programa
+6. Encerrando o programa.
 
 ### Menu
 
@@ -36,7 +36,7 @@ qual você gostaria de converter e, após isso, digite o valor a ser convertido.
 
 ![imagens do menu](images/ultilizando-o-conversor.png)
 
-### Salvando o arquivo;
+### Salvando o arquivo
 Após ter feito uma conversão, você terá opção de salvar a sua pesquisa. Caso deseje, pressione "S" - que corresponde a "sim" -, caso não seja de seu desejo, pressione "N" - que corresponde a "não" -
 Sua pesquisa ficara salva no caminho : src/resources/savedFile.
 
