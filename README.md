@@ -23,7 +23,7 @@ converter e, após isso, digite o valor a ser convertido. (Observação: digite 
 
 ![imagens do menu](images/menu-inicial.png)
 
-### Extendendo o menu
+### Estendendo o menu
 Ao digitar 1, será exibido o menu completo de todas as moedas disponiveis no programa e, digitando dois, você será 
 movido para próxima etapa do programa, que é a conversão.
 
