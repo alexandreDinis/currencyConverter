@@ -26,7 +26,7 @@ public class ConvercionRate {
     protected String   op  = "S";
     protected int number = 0;
     protected double value = 0.0;
-    protected String base,target,sValue;
+    protected String base,target,salve;
     protected String data = dateFormat.format(date);
 
     public void conversionStart(){
@@ -108,19 +108,32 @@ public class ConvercionRate {
                 input.nextLine();
 
                 System.out.println(msg.salveFile);
-                String salve = input.nextLine().toUpperCase(Locale.ROOT);
+                salve = input.nextLine().toUpperCase(Locale.ROOT);
 
                 // salvar arquivo
+                while(true) {
 
-                if(salve.contentEquals("S")){
-                    FileGenerator fileGenerator = new FileGenerator();
-                    try {
-                        fileGenerator.salveFile(rate);
-                        System.out.println(msg.salvedSuccessfully);
-                    } catch (IOException e) {
-                        throw new RuntimeException(e);
+                        try {
+
+                            if (salve.contentEquals("S")) {
+                                FileGenerator fileGenerator = new FileGenerator();
+                                fileGenerator.salveFile(rate);
+                                System.out.println(msg.salvedSuccessfully);
+                                break;
+
+                            }else if(salve.contentEquals("N")){
+                                break;
+                            }else{
+                                System.out.println(msg.notOption);
+                                System.out.println(msg.salveFile);
+                                salve = input.nextLine().toUpperCase(Locale.ROOT);
+                            }
+
+                        } catch (IOException e) {
+                            throw new RuntimeException(e);
+                        }
                     }
-                }
+
                 // Mostrar historico
 
             }else if(op.contentEquals("H")){
@@ -129,12 +142,25 @@ public class ConvercionRate {
                 System.out.println(msg.endtHistory);
                 System.out.println();
                 System.out.println(msg.salveFile);
-                String salve = input.nextLine().toUpperCase(Locale.ROOT);
-                if(salve.contentEquals("S")){
-                    FileGenerator fileGenerator = new FileGenerator();
+                salve = input.nextLine().toUpperCase(Locale.ROOT);
+                while(true) {
+
                     try {
-                        fileGenerator.salveFileHistory(list,data);
-                        System.out.println(msg.salvedSuccessfully);
+
+                        if (salve.contentEquals("S")) {
+                            FileGenerator fileGenerator = new FileGenerator();
+                            fileGenerator.salveFileHistory(list,data);
+                            System.out.println(msg.salvedSuccessfully);
+                            break;
+
+                        }else if(salve.contentEquals("N")){
+                            break;
+                        }else{
+                            System.out.println(msg.notOption);
+                            System.out.println(msg.salveFile);
+                            salve = input.nextLine().toUpperCase(Locale.ROOT);
+                        }
+
                     } catch (IOException e) {
                         throw new RuntimeException(e);
                     }

@@ -21,7 +21,7 @@ public class FileGenerator {
 
     public void salveFileHistory(List<?> list, String data) throws IOException {
 
-         String fileName = "Ultima-consulta-";
+         String fileName = "Historico-";
          fileName += data.replace('/', '_').replace(':', '_') + ".json";
          Gson gson = new GsonBuilder().setPrettyPrinting().create();
          try (FileWriter writer = new FileWriter(fileName)) {

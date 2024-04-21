@@ -7,7 +7,7 @@ public class Messages {
 
     protected final String error = "Por favor, digite apenas numeros";
     protected final String ChooseBase  = "Digite o número correspondente a moeda que você deseja converter ";
-    protected final String chooseTager = "Digite o numero correspondente a moeda que será convertida ";
+    protected final String chooseTager = "Digite o número correspondente a moeda que será convertida ";
     protected final String value = "Digite o valor que você deseja que seja convertido, ultize um ponto (.) para as casas decimais.";
     protected final String end = "Programa encerrado com sucesso! ";
     protected final String notOption = "Opção invalida!  ";
@@ -18,7 +18,7 @@ public class Messages {
     protected final String replay = "Deseja fazer uma nova consulta? [S]Sim | [N]Não | [H]Histórico de cunsulta.";
     protected final String salvedSuccessfully = "Salvo com sucesso!";
     protected final String startHistory = "=============== HISTORICO ================";
-    protected final String endtHistory = "=================== FIM ===================";
+    protected final String endtHistory = "================= FIM ===================";
 
     public void menu(){
 
@@ -55,9 +55,11 @@ Caso a moeda que você procure não esteja no menu abaixo, siga as próximas ins
                 if (number == 1) {
                     fullMenu();
                     break;
-                } else if (number != 2) {
-                    System.out.println(notOption);
 
+                } else if (number != 2) {
+
+                    System.out.println(notOption);
+                    Thread.sleep(1000);
                     menu();
                     break;
                 }else{
@@ -67,6 +69,8 @@ Caso a moeda que você procure não esteja no menu abaixo, siga as próximas ins
 
                 System.out.println(error);
                 input.nextLine();
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
             }
         }
     }
