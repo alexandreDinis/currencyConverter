@@ -20,17 +20,20 @@ public class FileGenerator {
         }
     }
 
-    public void salveFile(Rate rate) throws IOException {
-
+    public void salveFile(String data, Rate rate) throws IOException {
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
+        String directoryPath = "src/resources/savedFiles";
+        createDirectory(directoryPath);
 
-        String path = "src/resources/savedFiles/";
+        String formattedDate = data.replace("/", "_").replace(":", "_");
 
-        createDirectory(path);
 
-        FileWriter writer = new FileWriter(path + rate.getBase_code() + "-para-" + rate.getTarget_code() + ".json");
-        writer.write(gson.toJson(rate));
-        writer.close();
+        File file = new File(directoryPath, rate.getBase_code() + "-para-" + rate.getTarget_code() +"-" + formattedDate + ".json");
+
+
+        try (FileWriter writer = new FileWriter(file)) {
+            gson.toJson(rate, writer);
+        }
     }
 
 

@@ -117,7 +117,7 @@ public class ConvercionRate {
 
                             if (salve.contentEquals("S")) {
                                 FileGenerator fileGenerator = new FileGenerator();
-                                fileGenerator.salveFile(rate);
+                                fileGenerator.salveFile(data, rate);
                                 System.out.println(msg.salvedSuccessfully);
                                 break;
 
