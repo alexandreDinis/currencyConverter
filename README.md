@@ -38,6 +38,7 @@ qual você gostaria de converter e, após isso, digite o valor a ser convertido.
 
 ### Salvando o arquivo;
 Após ter feito uma conversão, você terá opção de salvar a sua pesquisa. Caso deseje, pressione "S" - que corresponde a "sim" -, caso não seja de seu desejo, pressione "N" - que corresponde a "não" -
+Sua pesquisa ficara salva no caminho : src/resources/savedFile.
 
 ![imagens do menu](images/salvando.png)
 
@@ -46,6 +47,7 @@ Após ter feito uma conversão, você terá opção de salvar a sua pesquisa. Ca
 Você terá a opção de ter acesso ao seu histórico das suas buscas ao pressionar "H" - que 
 significa "histórico de consulta" -, o programa exibirá uma mensagem para que você possa salvar seu histórico em um 
 documento em formato .json
+Sua pesquisa ficara salva no caminho : src/resources/history.
 
 ![imagens do menu](images/historico.png)
 
