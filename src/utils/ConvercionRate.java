@@ -116,8 +116,8 @@ public class ConvercionRate {
                         try {
 
                             if (salve.contentEquals("S")) {
-                                FileGenerator fileGenerator = new FileGenerator();
-                                fileGenerator.salveFile(data, rate);
+                                FileGenerator fileGenerator = new FileGenerator(data);
+                                fileGenerator.salveFile(rate);
                                 System.out.println(msg.salvedSuccessfully);
                                 break;
 
@@ -148,8 +148,8 @@ public class ConvercionRate {
                     try {
 
                         if (salve.contentEquals("S")) {
-                            FileGenerator fileGenerator = new FileGenerator();
-                            fileGenerator.salveFileHistory(list,data);
+                            FileGenerator fileGenerator = new FileGenerator(data);
+                            fileGenerator.salveFileHistory(list);
                             System.out.println(msg.salvedSuccessfully);
                             break;
 
