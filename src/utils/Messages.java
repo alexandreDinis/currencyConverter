@@ -5,20 +5,20 @@ import java.util.Scanner;
 
 public class Messages {
 
-    protected final String error = "Por favor, digite apenas numeros";
-    protected final String ChooseBase  = "Digite o número correspondente a moeda que você deseja converter ";
-    protected final String chooseTager = "Digite o número correspondente a moeda que será convertida ";
-    protected final String value = "Digite o valor que você deseja que seja convertido, ultize um ponto (.) para as casas decimais.";
-    protected final String end = "Programa encerrado com sucesso! ";
-    protected final String notOption = "Opção invalida!  ";
-    protected final String extendMenu = "Caso não tenha encontrado a moeda de sua procura, digite [1] para estender o menu ou, [2] para continuar.";
-    protected final String dotError = "ERRO, talvez você esteja usando virgula(,) ou não digitou um número!";
-    protected final String loading = "Carregando, por favor aguarde...";
-    protected final String salveFile = "Deseja salvar a sua consulta? [S/N] ";
-    protected final String replay = "Deseja fazer uma nova consulta? [S]Sim | [N]Não | [H]Histórico de cunsulta.";
-    protected final String salvedSuccessfully = "Salvo com sucesso!";
-    protected final String startHistory = "=============== HISTORICO ================";
-    protected final String endtHistory = "================= FIM ===================";
+    protected static final String ERROR = "Por favor, digite apenas numeros";
+    protected static final String CHOOSE_BASE = "Digite o número correspondente a moeda que você deseja converter ";
+    protected static final String CHOOSE_TAGER = "Digite o número correspondente a moeda que será convertida ";
+    protected static final String VALUE = "Digite o valor que você deseja que seja convertido, ultize um ponto (.) para as casas decimais.";
+    protected static final String END = "Programa encerrado com sucesso! ";
+    protected static final String NOT_OPTION = "Opção invalida!  ";
+    protected static final String EXTEND_MENU = "Caso não tenha encontrado a moeda de sua procura, digite [1] para estender o menu ou, [2] para continuar.";
+    protected static final String DOT_ERROR = "ERRO, talvez você esteja usando virgula(,) ou não digitou um número!";
+    protected static final String LOADING = "Carregando, por favor aguarde...";
+    protected static final String SALVE_FILE = "Deseja salvar a sua consulta? [S/N] ";
+    protected static final String REPLAY = "Deseja fazer uma nova consulta? [S]Sim | [N]Não | [H]Histórico de cunsulta.";
+    protected static final String SALVED_SUCCESSFULLY = "Salvo com sucesso!";
+    protected static final String START_HISTORY = "=============== HISTORICO ================";
+    protected static final String END_HISTORY = "================= FIM ===================";
 
     public void menu(){
 
@@ -44,7 +44,7 @@ Caso a moeda que você procure não esteja no menu abaixo, siga as próximas ins
 [6] USD - Dólar americano
 ===============================
 """);
-        System.out.println(extendMenu);
+        System.out.println(EXTEND_MENU);
 
         Scanner input = new Scanner(System.in);
 
@@ -58,7 +58,7 @@ Caso a moeda que você procure não esteja no menu abaixo, siga as próximas ins
 
                 } else if (number != 2) {
 
-                    System.out.println(notOption);
+                    System.out.println(NOT_OPTION);
                     Thread.sleep(1000);
                     menu();
                     break;
@@ -67,7 +67,7 @@ Caso a moeda que você procure não esteja no menu abaixo, siga as próximas ins
                 }
             } catch (InputMismatchException e) {
 
-                System.out.println(error);
+                System.out.println(ERROR);
                 input.nextLine();
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);

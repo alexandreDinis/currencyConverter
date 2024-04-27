@@ -36,7 +36,7 @@ public class ConvercionRate {
         while(true){
 
             if(op.contentEquals("N")){
-                System.out.println(msg.end);
+                System.out.println(Messages.END);
                 input.close();
                 break;
 
@@ -45,7 +45,7 @@ public class ConvercionRate {
                 msg.menu();
 
                 while (true) {
-                    System.out.println(msg.ChooseBase);
+                    System.out.println(Messages.CHOOSE_BASE);
 
                     try {
                         number = input.nextInt();
@@ -56,16 +56,16 @@ public class ConvercionRate {
 
                         } else {
 
-                            System.out.println(msg.notOption);
+                            System.out.println(Messages.NOT_OPTION);
                         }
                     } catch (InputMismatchException e) {
 
-                        System.out.println(msg.error);
+                        System.out.println(Messages.ERROR);
                         input.nextLine();
                     }
                 }
                 while (true){
-                    System.out.println(msg.chooseTager);
+                    System.out.println(Messages.CHOOSE_TAGER);
 
                     try {
                         number = input.nextInt();
@@ -76,29 +76,29 @@ public class ConvercionRate {
 
                         }else{
 
-                            System.out.println(msg.notOption);
+                            System.out.println(Messages.NOT_OPTION);
                         }
                     }catch (InputMismatchException e) {
 
-                        System.out.println(msg.error);
+                        System.out.println(Messages.ERROR);
                         input.nextLine();
                     }
                 }
                 while (true){
 
-                    System.out.println(msg.value);
+                    System.out.println(Messages.VALUE);
                     try {
                         value = input.nextDouble();
                         break;
 
                     }catch (InputMismatchException e){
 
-                        System.out.println(msg.dotError);
+                        System.out.println(Messages.DOT_ERROR);
                         input.nextLine();
                     }
                 }
 
-                System.out.println(msg.loading);
+                System.out.println(Messages.LOADING);
                 System.out.println();
                 Rate rate = ex.search(base, target, value);
                 rate.setData(data);
@@ -107,7 +107,7 @@ public class ConvercionRate {
                 System.out.println();
                 input.nextLine();
 
-                System.out.println(msg.salveFile);
+                System.out.println(Messages.SALVE_FILE);
                 salve = input.nextLine().toUpperCase(Locale.ROOT);
 
                 // salvar arquivo
@@ -118,14 +118,14 @@ public class ConvercionRate {
                             if (salve.contentEquals("S")) {
                                 FileGenerator fileGenerator = new FileGenerator(data);
                                 fileGenerator.salveFile(rate);
-                                System.out.println(msg.salvedSuccessfully);
+                                System.out.println(Messages.SALVED_SUCCESSFULLY);
                                 break;
 
                             }else if(salve.contentEquals("N")){
                                 break;
                             }else{
-                                System.out.println(msg.notOption);
-                                System.out.println(msg.salveFile);
+                                System.out.println(Messages.NOT_OPTION);
+                                System.out.println(Messages.SALVE_FILE);
                                 salve = input.nextLine().toUpperCase(Locale.ROOT);
                             }
 
@@ -137,11 +137,11 @@ public class ConvercionRate {
                 // Mostrar historico
 
             }else if(op.contentEquals("H")){
-                System.out.println(msg.startHistory);
+                System.out.println(Messages.START_HISTORY);
                 System.out.println(gson.toJson(list));
-                System.out.println(msg.endtHistory);
+                System.out.println(Messages.END_HISTORY);
                 System.out.println();
-                System.out.println(msg.salveFile);
+                System.out.println(Messages.SALVE_FILE);
                 salve = input.nextLine().toUpperCase(Locale.ROOT);
                 while(true) {
 
@@ -150,14 +150,14 @@ public class ConvercionRate {
                         if (salve.contentEquals("S")) {
                             FileGenerator fileGenerator = new FileGenerator(data);
                             fileGenerator.salveFileHistory(list);
-                            System.out.println(msg.salvedSuccessfully);
+                            System.out.println(Messages.SALVED_SUCCESSFULLY);
                             break;
 
                         }else if(salve.contentEquals("N")){
                             break;
                         }else{
-                            System.out.println(msg.notOption);
-                            System.out.println(msg.salveFile);
+                            System.out.println(Messages.NOT_OPTION);
+                            System.out.println(Messages.SALVE_FILE);
                             salve = input.nextLine().toUpperCase(Locale.ROOT);
                         }
 
@@ -166,14 +166,14 @@ public class ConvercionRate {
                     }
                 }
             }else{
-                System.out.println(msg.notOption);
+                System.out.println(Messages.NOT_OPTION);
             }
-            System.out.println(msg.replay);
+            System.out.println(Messages.REPLAY);
 
             try {
                 op = input.nextLine().toUpperCase();
             }catch (InputMismatchException e){
-                System.out.println(msg.notOption);
+                System.out.println(Messages.NOT_OPTION);
 
             }
         }
